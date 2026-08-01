@@ -1,0 +1,80 @@
+{
+  "expo": {
+    "name": "ECO",
+    "slug": "eco",
+    "version": "1.0.2",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "eco",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.brayancordova.apps",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Permitir que ECO acceda a tu ubicación para mostrar incidencias cercanas y registrar reportes.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "Permitir que ECO acceda a tu ubicación para mostrar incidencias cercanas.",
+        "NSCameraUsageDescription": "Permitir que ECO acceda a tu cámara para tomar fotos de las incidencias.",
+        "NSPhotoLibraryUsageDescription": "Permitir que ECO acceda a tus fotos para adjuntar evidencia de incidencias."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/images/android-icon-foreground.png",
+        "backgroundImage": "./assets/images/android-icon-background.png",
+        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+      },
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false,
+      "package": "com.brayancordova.apps",
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
+      ]
+    },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Permitir que ECO acceda a tu ubicación para mostrar incidencias cercanas y registrar reportes.",
+          "locationAlwaysPermission": "Permitir que ECO acceda a tu ubicación en todo momento.",
+          "locationWhenInUsePermission": "Permitir que ECO acceda a tu ubicación mientras usas la app.",
+          "isAndroidBackgroundLocationEnabled": false,
+          "isIosBackgroundLocationEnabled": false
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#ffffff",
+          "dark": {
+            "backgroundColor": "#000000"
+          }
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "82848904-642c-4f94-a1f8-a77d3869a47a"
+      },
+      "router": {}
+    },
+    "owner": "brayancordova"
+  }
+}

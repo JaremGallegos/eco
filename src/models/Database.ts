@@ -19,17 +19,17 @@ export interface TipoFalla {
   id_tipo_falla: number;
   id_tipo_servicio: number;
   nombre_falla: string;
-  gravedad_defecto: 'Baja' | 'Media' | 'Alta' | 'Critica';
+  gravedad_defecto: "Baja" | "Media" | "Alta" | "Critica";
 }
 
 export interface TipoEvidencia {
   id_tipo_evidencia: number;
-  nombre_tipo: 'FOTO' | 'VIDEO';
+  nombre_tipo: "FOTO" | "VIDEO";
 }
 
 export interface EstadoNotificacion {
   id_estado_notificacion: number;
-  nombre_estado: 'PENDIENTE' | 'ENVIADO' | 'ENTREGADO' | 'LEIDO';
+  nombre_estado: "PENDIENTE" | "ENVIADO" | "ENTREGADO" | "LEIDO";
 }
 
 export interface Usuario {
@@ -50,8 +50,8 @@ export interface Usuario {
 export interface EmpresaServicio {
   id_empresa: number;
   nombre_empresa: string;
-  tipo_servicio: 'LUZ' | 'AGUA';
-  codigo_empresa: string;
+  tipo_servicio: "LUZ" | "AGUA";
+  ruc: string;
   activa: boolean;
   created_at: string;
 }
@@ -60,8 +60,6 @@ export interface SectorGeografico {
   id_sector: number;
   nombre_sector: string;
   eps_asociada: string | null;
-
-
   poligono?: Coordinate[];
 }
 

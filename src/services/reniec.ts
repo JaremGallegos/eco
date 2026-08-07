@@ -9,7 +9,7 @@ export interface ReniecResponse {
     nombres: string;
     apellido_paterno: string;
     apellido_materno: string;
-    codigo_verificacion: string;
+    codigo_verificacion: string; // Es nunmber
   };
   message?: string;
 }
@@ -61,7 +61,7 @@ const namesMatch = (input: string | undefined | null, reniec: string | undefined
 
 export const consultarDNI = async (dni: string): Promise<ReniecResponse> => {
   try {
-    const response = await fetch(`${RENIEC_API_URL}?numero=${dni}`, {
+    const response = await fetch(`${RENIEC_API_URL}${dni}`, {
       method: 'GET',
       headers: {
         'Accept': 'application/json',

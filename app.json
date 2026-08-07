@@ -10,7 +10,7 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.brayancordova.apps",
+      "bundleIdentifier": "com.josephgallegos.eco",
       "infoPlist": {
         "NSLocationWhenInUseUsageDescription": "Permitir que ECO acceda a tu ubicación para mostrar incidencias cercanas y registrar reportes.",
         "NSLocationAlwaysAndWhenInUseUsageDescription": "Permitir que ECO acceda a tu ubicación para mostrar incidencias cercanas.",
@@ -27,7 +27,7 @@
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "package": "com.brayancordova.apps",
+      "package": "com.josephgallegos.eco",
       "permissions": [
         "ACCESS_COARSE_LOCATION",
         "ACCESS_FINE_LOCATION",
@@ -71,10 +71,10 @@
     },
     "extra": {
       "eas": {
-        "projectId": "82848904-642c-4f94-a1f8-a77d3869a47a"
+        "projectId": "3594a279-6de3-49a6-8f06-9919c167570f"
       },
       "router": {}
     },
-    "owner": "brayancordova"
+    "owner": "josephgallegos"
   }
 }

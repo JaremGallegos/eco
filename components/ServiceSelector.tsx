@@ -1,11 +1,19 @@
-import { Colors, Spacing, Typography } from '@/constants/theme';
-import { EmpresaServicio } from '@/src/models/Database';
-import { Ionicons } from '@expo/vector-icons';
-import React, { useState } from 'react';
-import { ActivityIndicator, Modal, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Colors, Spacing, Typography } from "@/constants/theme";
+import { EmpresaServicio } from "@/src/models/Database";
+import { Ionicons } from "@expo/vector-icons";
+import React, { useState } from "react";
+import {
+    ActivityIndicator,
+    Modal,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
+} from "react-native";
 
 interface ServiceSelectorProps {
-  tipoServicio: 'LUZ' | 'AGUA';
+  tipoServicio: "LUZ" | "AGUA";
   empresas: EmpresaServicio[];
   empresaSeleccionada: number | null;
   onEmpresaChange: (idEmpresa: number | null) => void;
@@ -23,9 +31,11 @@ export default function ServiceSelector({
 }: ServiceSelectorProps) {
   const [modalVisible, setModalVisible] = useState(false);
 
-  const empresaActual = empresas.find(e => e.id_empresa === empresaSeleccionada);
-  const iconName = tipoServicio === 'LUZ' ? 'flash' : 'water';
-  const color = tipoServicio === 'LUZ' ? Colors.warning : Colors.info;
+  const empresaActual = empresas.find(
+    (e) => e.id_empresa === empresaSeleccionada,
+  );
+  const iconName = tipoServicio === "LUZ" ? "flash" : "water";
+  const color = tipoServicio === "LUZ" ? Colors.warning : Colors.info;
 
   const handleSelectEmpresa = (idEmpresa: number) => {
     onEmpresaChange(idEmpresa);
@@ -38,12 +48,11 @@ export default function ServiceSelector({
 
   return (
     <View style={styles.container}>
-
       <TouchableOpacity
         style={[
           styles.selectorSimple,
           empresaSeleccionada ? styles.selectorActive : null,
-          error ? styles.selectorError : null
+          error ? styles.selectorError : null,
         ]}
         onPress={() => setModalVisible(true)}
         disabled={loading}
@@ -54,7 +63,16 @@ export default function ServiceSelector({
         ) : (
           <>
             <View style={styles.selectorContent}>
-              <View style={[styles.iconBadge, { backgroundColor: empresaActual ? color + '15' : Colors.gray200 }]}>
+              <View
+                style={[
+                  styles.iconBadge,
+                  {
+                    backgroundColor: empresaActual
+                      ? color + "15"
+                      : Colors.gray200,
+                  },
+                ]}
+              >
                 <Ionicons
                   name="business"
                   size={20}
@@ -62,24 +80,31 @@ export default function ServiceSelector({
                 />
               </View>
               <View style={styles.selectorTextContainer}>
-                <Text style={[
-                  styles.selectorText,
-                  !empresaActual && styles.placeholderText
-                ]}>
-                  {empresaActual ? empresaActual.nombre_empresa : 'Seleccionar empresa'}
+                <Text
+                  style={[
+                    styles.selectorText,
+                    !empresaActual && styles.placeholderText,
+                  ]}
+                >
+                  {empresaActual
+                    ? empresaActual.nombre_empresa
+                    : "Seleccionar empresa"}
                 </Text>
                 {empresaActual && (
                   <Text style={styles.empresaCodeSmall}>
-                    Código: {empresaActual.codigo_empresa}
+                    Código: {empresaActual.ruc}
                   </Text>
                 )}
               </View>
             </View>
-            <Ionicons name="chevron-forward" size={22} color={empresaActual ? color : Colors.gray400} />
+            <Ionicons
+              name="chevron-forward"
+              size={22}
+              color={empresaActual ? color : Colors.gray400}
+            />
           </>
         )}
       </TouchableOpacity>
-
 
       <Modal
         animationType="slide"
@@ -91,7 +116,7 @@ export default function ServiceSelector({
           <View style={styles.modalContent}>
             <View style={styles.modalHeader}>
               <Text style={styles.modalTitle}>
-                Seleccionar Empresa de {tipoServicio === 'LUZ' ? 'Luz' : 'Agua'}
+                Seleccionar Empresa de {tipoServicio === "LUZ" ? "Luz" : "Agua"}
               </Text>
               <TouchableOpacity onPress={() => setModalVisible(false)}>
                 <Ionicons name="close" size={28} color={Colors.gray700} />
@@ -102,42 +127,73 @@ export default function ServiceSelector({
               {empresas.length} empresas disponibles en tu zona
             </Text>
 
-            <ScrollView style={styles.modalList} showsVerticalScrollIndicator={false}>
+            <ScrollView
+              style={styles.modalList}
+              showsVerticalScrollIndicator={false}
+            >
               {empresas.map((empresa, index) => (
                 <TouchableOpacity
                   key={empresa.id_empresa}
                   style={[
                     styles.empresaItem,
-                    empresaSeleccionada === empresa.id_empresa && styles.empresaItemSelected
+                    empresaSeleccionada === empresa.id_empresa &&
+                      styles.empresaItemSelected,
                   ]}
                   onPress={() => handleSelectEmpresa(empresa.id_empresa)}
                   activeOpacity={0.7}
                 >
-                  <View style={[
-                    styles.empresaIconContainer,
-                    { backgroundColor: empresaSeleccionada === empresa.id_empresa ? color + '15' : Colors.gray100 }
-                  ]}>
+                  <View
+                    style={[
+                      styles.empresaIconContainer,
+                      {
+                        backgroundColor:
+                          empresaSeleccionada === empresa.id_empresa
+                            ? color + "15"
+                            : Colors.gray100,
+                      },
+                    ]}
+                  >
                     <Ionicons
                       name="business"
                       size={20}
-                      color={empresaSeleccionada === empresa.id_empresa ? color : Colors.gray600}
+                      color={
+                        empresaSeleccionada === empresa.id_empresa
+                          ? color
+                          : Colors.gray600
+                      }
                     />
                   </View>
                   <View style={styles.empresaInfo}>
-                    <Text style={[
-                      styles.empresaName,
-                      empresaSeleccionada === empresa.id_empresa && styles.empresaNameSelected
-                    ]}>
+                    <Text
+                      style={[
+                        styles.empresaName,
+                        empresaSeleccionada === empresa.id_empresa &&
+                          styles.empresaNameSelected,
+                      ]}
+                    >
                       {empresa.nombre_empresa}
                     </Text>
                     <View style={styles.empresaCodeContainer}>
-                      <Ionicons name="pricetag" size={12} color={Colors.gray500} />
-                      <Text style={styles.empresaCode}>{empresa.codigo_empresa}</Text>
+                      <Ionicons
+                        name="pricetag"
+                        size={12}
+                        color={Colors.gray500}
+                      />
+                      <Text style={styles.empresaCode}>{empresa.ruc}</Text>
                     </View>
                   </View>
                   {empresaSeleccionada === empresa.id_empresa && (
-                    <View style={[styles.checkmarkContainer, { backgroundColor: Colors.success }]}>
-                      <Ionicons name="checkmark" size={20} color={Colors.white} />
+                    <View
+                      style={[
+                        styles.checkmarkContainer,
+                        { backgroundColor: Colors.success },
+                      ]}
+                    >
+                      <Ionicons
+                        name="checkmark"
+                        size={20}
+                        color={Colors.white}
+                      />
                     </View>
                   )}
                 </TouchableOpacity>
@@ -152,33 +208,33 @@ export default function ServiceSelector({
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
+    width: "100%",
   },
   selectorSimple: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
     backgroundColor: Colors.white,
     borderWidth: 2,
     borderColor: Colors.gray300,
     borderRadius: 12,
     padding: Spacing.md,
     minHeight: 64,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.05,
     shadowRadius: 4,
     elevation: 2,
   },
   header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     marginBottom: Spacing.xs,
   },
   titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     gap: Spacing.xs,
   },
   title: {
@@ -189,12 +245,12 @@ const styles = StyleSheet.create({
   optional: {
     fontSize: Typography.sizes.sm,
     color: Colors.gray500,
-    fontStyle: 'italic',
+    fontStyle: "italic",
   },
   selector: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
     backgroundColor: Colors.gray100,
     borderWidth: 1,
     borderColor: Colors.gray300,
@@ -206,8 +262,8 @@ const styles = StyleSheet.create({
     borderColor: Colors.error,
   },
   selectorContent: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     gap: Spacing.sm,
     flex: 1,
   },
@@ -221,21 +277,21 @@ const styles = StyleSheet.create({
   },
   modalOverlay: {
     flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    justifyContent: 'flex-end',
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    justifyContent: "flex-end",
   },
   modalContent: {
     backgroundColor: Colors.white,
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
-    maxHeight: '80%',
+    maxHeight: "80%",
     paddingTop: Spacing.lg,
-    paddingBottom: Spacing.xl
+    paddingBottom: Spacing.xl,
   },
   modalHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     paddingHorizontal: Spacing.lg,
     paddingBottom: Spacing.md,
     borderBottomWidth: 1,
@@ -251,15 +307,15 @@ const styles = StyleSheet.create({
     paddingBottom: Spacing.xl,
   },
   empresaItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     padding: 14,
     backgroundColor: Colors.white,
     borderRadius: 12,
     marginBottom: 10,
     borderWidth: 2,
     borderColor: Colors.gray200,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.05,
     shadowRadius: 2,
@@ -276,8 +332,8 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     marginRight: 12,
   },
   empresaInfo: {
@@ -285,16 +341,16 @@ const styles = StyleSheet.create({
   },
   empresaName: {
     fontSize: 15,
-    fontWeight: '600',
+    fontWeight: "600",
     color: Colors.gray800,
     marginBottom: 4,
   },
   empresaNameSelected: {
-    fontWeight: '700',
+    fontWeight: "700",
   },
   empresaCodeContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   empresaCode: {
     fontSize: 12,
@@ -305,8 +361,8 @@ const styles = StyleSheet.create({
     width: 28,
     height: 28,
     borderRadius: 14,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   modalDescription: {
     fontSize: 14,
@@ -320,23 +376,23 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     padding: 16,
     borderLeftWidth: 4,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.05,
     shadowRadius: 8,
     elevation: 2,
   },
   cardHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginBottom: 12,
   },
   iconCircle: {
     width: 40,
     height: 40,
     borderRadius: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     marginRight: 12,
   },
   cardTitleContainer: {
@@ -344,7 +400,7 @@ const styles = StyleSheet.create({
   },
   cardTitle: {
     fontSize: 17,
-    fontWeight: '700',
+    fontWeight: "700",
     color: Colors.gray800,
     marginBottom: 2,
   },
@@ -363,8 +419,8 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
     borderRadius: 8,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     marginRight: 10,
   },
   selectorTextContainer: {

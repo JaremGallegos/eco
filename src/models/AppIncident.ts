@@ -2,7 +2,7 @@
 export interface AppIncident {
   id: number;
   trackingCode: string;
-  serviceType: 'Agua' | 'Electricidad';
+  serviceType: 'AGUA' | 'LUZ';
   status: string;
   location: {
     latitude: number;

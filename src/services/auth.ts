@@ -357,6 +357,7 @@ export const authService = {
         throw new Error('Usuario no encontrado');
       }
 
+      /// Revisar como se creo la API
       const response = await fetch(`https://eeqkkqaelkwasmtqhpms.supabase.co/functions/v1/reset-password`, {
         method: 'POST',
         headers: {

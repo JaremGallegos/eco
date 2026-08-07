@@ -19,7 +19,7 @@ interface FailureType {
 }
 
 interface FailureTypeSelectorProps {
-  serviceType: 'Agua' | 'Electricidad' | null;
+  serviceType: 'AGUA' | 'LUZ' | null;
   selectedIds: number[];
   onSelect: (ids: number[], names: string[]) => void;
   maxSelections?: number;

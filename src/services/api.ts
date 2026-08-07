@@ -35,10 +35,10 @@ export async function getDashboardStats(): Promise<DashboardStats> {
 
     const incidentsByType = {
       agua: incidentsList.filter(
-        (inc: any) => inc.tipos_servicio?.nombre_servicio === 'Agua'
+        (inc: any) => inc.tipos_servicio?.nombre_servicio === 'AGUA'
       ).length,
       electricidad: incidentsList.filter(
-        (inc: any) => inc.tipos_servicio?.nombre_servicio === 'Electricidad'
+        (inc: any) => inc.tipos_servicio?.nombre_servicio === 'LUZ'
       ).length,
     };
 
@@ -143,7 +143,7 @@ export async function getIncidentDetail(incidentId: number): Promise<AppIncident
 }
 
 export async function createIncident(incidentData: {
-  serviceType: 'Agua' | 'Electricidad';
+  serviceType: 'AGUA' | 'LUZ';
   location: { latitude: number; longitude: number; address?: string };
   description: string;
   media?: string[];
@@ -280,7 +280,7 @@ function mapIncidentsToAppFormat(dbIncidents: any[]): AppIncident[] {
     return {
       id: inc.id_incidencia,
       trackingCode: inc.codigo_seguimiento,
-      serviceType: serviceName === 'Agua' ? 'Agua' : 'Electricidad',
+      serviceType: serviceName === 'AGUA' ? 'AGUA' : 'LUZ',
       status: statusName,
       location: {
         latitude: inc.latitud,
@@ -300,7 +300,7 @@ function mapIncidentsToAppFormat(dbIncidents: any[]): AppIncident[] {
   });
 }
 
-export async function getFailureTypes(serviceType: 'Agua' | 'Electricidad'): Promise<any[]> {
+export async function getFailureTypes(serviceType: 'AGUA' | 'LUZ'): Promise<any[]> {
   try {
     const { data: serviceData } = await supabase
       .from('tipos_servicio')

@@ -29,8 +29,8 @@ export default function History() {
     return incidents.filter((incident) => {
       const matchesSearch = incident.trackingCode.toLowerCase().includes(search.toLowerCase());
       const matchesType = filterType === 'all' ||
-        (filterType === 'agua' && incident.serviceType === 'Agua') ||
-        (filterType === 'luz' && incident.serviceType === 'Electricidad');
+        (filterType === 'agua' && incident.serviceType === 'AGUA') ||
+        (filterType === 'luz' && incident.serviceType === 'LUZ');
       return matchesSearch && matchesType;
     });
   }, [incidents, search, filterType]);

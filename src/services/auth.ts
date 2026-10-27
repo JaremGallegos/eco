@@ -50,7 +50,7 @@ export const authService = {
     const { data: roleData } = await supabase
       .from('roles')
       .select('id_rol')
-      .eq('nombre_rol', 'Ciudadano')
+      .eq('nombre_rol', 'CIUDADANO')
       .single();
 
     const roleId = roleData?.id_rol || 1;
@@ -164,7 +164,7 @@ export const authService = {
         const { data: roleData } = await supabase
           .from('roles')
           .select('id_rol')
-          .eq('nombre_rol', 'Ciudadano')
+          .eq('nombre_rol', 'CIUDADANO')
           .single();
         const roleId = roleData?.id_rol || 1;
 

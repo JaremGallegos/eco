@@ -78,8 +78,8 @@ export default function Map() {
   const filteredIncidents = useMemo(() => {
     return incidents.filter((r) =>
       filterType === 'all' ||
-      (filterType === 'agua' && r.serviceType === 'Agua') ||
-      (filterType === 'luz' && r.serviceType === 'Electricidad')
+      (filterType === 'agua' && r.serviceType === 'AGUA') ||
+      (filterType === 'luz' && r.serviceType === 'LUZ')
     );
   }, [incidents, filterType]);
 
@@ -130,7 +130,7 @@ export default function Map() {
               latitude: incident.location.latitude,
               longitude: incident.location.longitude,
             }}
-            title={incident.serviceType === 'Agua' ? 'Problema de Agua' : 'Problema de Electricidad'}
+            title={incident.serviceType === 'AGUA' ? 'Problema de Agua' : 'Problema de Electricidad'}
             description={incident.status}
           >
             <AnimatedMarker type={incident.serviceType.toLowerCase()} />
@@ -253,4 +253,3 @@ const styles = StyleSheet.create({
     marginRight: Spacing.lg,
   },
 });
-

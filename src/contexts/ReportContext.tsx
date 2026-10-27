@@ -18,7 +18,7 @@ export interface MediaItem {
 interface ReportState {
   location: LocationData | null;
   media: MediaItem[];
-  reportType: 'agua' | 'luz';
+  reportType: 'AGUA' | 'LUZ';
   failureTypeIds: number[];
   loading: boolean;
   error: string | null;
@@ -29,7 +29,7 @@ interface ReportContextType extends ReportState {
   setMedia: (media: MediaItem[]) => void;
   addMedia: (item: MediaItem) => void;
   removeMedia: (index: number) => void;
-  setReportType: (type: 'agua' | 'luz') => void;
+  setReportType: (type: 'AGUA' | 'LUZ') => void;
   setFailureTypeIds: (ids: number[]) => void;
   setLoading: (loading: boolean) => void;
   setError: (error: string | null) => void;
@@ -41,7 +41,7 @@ const ReportContext = createContext<ReportContextType | undefined>(undefined);
 export function ReportProvider({ children }: { children: ReactNode }) {
   const [location, setLocation] = useState<LocationData | null>(null);
   const [media, setMedia] = useState<MediaItem[]>([]);
-  const [reportType, setReportType] = useState<'agua' | 'luz'>('agua');
+  const [reportType, setReportType] = useState<'AGUA' | 'LUZ'>('AGUA');
   const [failureTypeIds, setFailureTypeIds] = useState<number[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -67,7 +67,7 @@ export function ReportProvider({ children }: { children: ReactNode }) {
   const reset = useCallback(() => {
     setLocation(null);
     setMedia([]);
-    setReportType('agua');
+    setReportType('AGUA');
     setFailureTypeIds([]);
     setLoading(false);
     setError(null);
@@ -105,4 +105,3 @@ export function useReportContext() {
   }
   return context;
 }
-

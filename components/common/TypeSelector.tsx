@@ -4,8 +4,8 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 interface TypeSelectorProps {
-  selectedType: 'agua' | 'luz' | null;
-  onTypeSelect: (type: 'agua' | 'luz') => void;
+  selectedType: 'AGUA' | 'LUZ' | null;
+  onTypeSelect: (type: 'AGUA' | 'LUZ') => void;
 }
 
 export const TypeSelector: React.FC<TypeSelectorProps> = ({
@@ -17,32 +17,32 @@ export const TypeSelector: React.FC<TypeSelectorProps> = ({
       <TouchableOpacity
         style={[
           styles.typeOption,
-          selectedType === 'agua' && styles.typeOptionActive,
+          selectedType === 'AGUA' && styles.typeOptionActive,
         ]}
-        onPress={() => onTypeSelect('agua')}
+        onPress={() => onTypeSelect('AGUA')}
         activeOpacity={0.8}
       >
         <View
           style={[
             styles.iconContainer,
-            selectedType === 'agua' && styles.iconContainerActive,
+            selectedType === 'AGUA' && styles.iconContainerActive,
           ]}
         >
           <Ionicons
             name="water"
             size={32}
-            color={selectedType === 'agua' ? Colors.water : Colors.darkGray}
+            color={selectedType === 'AGUA' ? Colors.water : Colors.darkGray}
           />
         </View>
         <Text
           style={[
             styles.typeText,
-            selectedType === 'agua' && styles.typeTextActive,
+            selectedType === 'AGUA' && styles.typeTextActive,
           ]}
         >
           Agua
         </Text>
-        {selectedType === 'agua' && (
+        {selectedType === 'AGUA' && (
           <View style={styles.checkmark}>
             <Ionicons name="checkmark-circle" size={24} color={Colors.water} />
           </View>
@@ -52,32 +52,32 @@ export const TypeSelector: React.FC<TypeSelectorProps> = ({
       <TouchableOpacity
         style={[
           styles.typeOption,
-          selectedType === 'luz' && styles.typeOptionActive,
+          selectedType === 'LUZ' && styles.typeOptionActive,
         ]}
-        onPress={() => onTypeSelect('luz')}
+        onPress={() => onTypeSelect('LUZ')}
         activeOpacity={0.8}
       >
         <View
           style={[
             styles.iconContainer,
-            selectedType === 'luz' && styles.iconContainerActive,
+            selectedType === 'LUZ' && styles.iconContainerActive,
           ]}
         >
           <Ionicons
             name="flash"
             size={32}
-            color={selectedType === 'luz' ? Colors.electric : Colors.darkGray}
+            color={selectedType === 'LUZ' ? Colors.electric : Colors.darkGray}
           />
         </View>
         <Text
           style={[
             styles.typeText,
-            selectedType === 'luz' && styles.typeTextActive,
+            selectedType === 'LUZ' && styles.typeTextActive,
           ]}
         >
           Luz
         </Text>
-        {selectedType === 'luz' && (
+        {selectedType === 'LUZ' && (
           <View style={styles.checkmark}>
             <Ionicons name="checkmark-circle" size={24} color={Colors.electric} />
           </View>

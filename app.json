@@ -15,8 +15,10 @@
         "NSLocationWhenInUseUsageDescription": "Permitir que ECO acceda a tu ubicación para mostrar incidencias cercanas y registrar reportes.",
         "NSLocationAlwaysAndWhenInUseUsageDescription": "Permitir que ECO acceda a tu ubicación para mostrar incidencias cercanas.",
         "NSCameraUsageDescription": "Permitir que ECO acceda a tu cámara para tomar fotos de las incidencias.",
-        "NSPhotoLibraryUsageDescription": "Permitir que ECO acceda a tus fotos para adjuntar evidencia de incidencias."
-      }
+        "NSPhotoLibraryUsageDescription": "Permitir que ECO acceda a tus fotos para adjuntar evidencia de incidencias.",
+        "ITSAppUsesNonExemptEncryption": false
+      },
+      "config": {}
     },
     "android": {
       "adaptiveIcon": {

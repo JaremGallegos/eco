@@ -23,7 +23,7 @@ export default function CreateReport() {
   );
 
   useEffect(() => {
-    if (type === 'agua' || type === 'luz') {
+    if (type === 'AGUA' || type === 'LUZ') {
       setReportType(type);
     }
   }, [type, setReportType]);
@@ -33,7 +33,7 @@ export default function CreateReport() {
     router.push('/report/location-map' as any);
   };
 
-  const handleTypeSelect = (selectedType: 'agua' | 'luz') => {
+  const handleTypeSelect = (selectedType: 'AGUA' | 'LUZ') => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     setReportType(selectedType);
     setFailureTypeIds([]);
@@ -76,7 +76,7 @@ export default function CreateReport() {
         {reportType && (
           <FadeInView delay={150}>
             <FailureTypeSelector
-              serviceType={reportType === 'agua' ? 'Agua' : 'Electricidad'}
+              serviceType={reportType === 'AGUA' ? 'AGUA' : 'LUZ'}
               selectedIds={failureTypeIds}
               onSelect={(ids: number[], names: string[]) => {
                 setFailureTypeIds(ids);

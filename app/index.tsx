@@ -128,14 +128,14 @@ export default function DashboardScreen() {
               <View style={styles.typeStatItem}>
                 <View style={[styles.typeDot, { backgroundColor: Colors.info }]} />
                 <Ionicons name="water" size={14} color="rgba(255,255,255,0.8)" />
-                <Text style={styles.typeStatValue}>{stats?.incidentsByType?.agua || 0}</Text>
+                <Text style={styles.typeStatValue}>{stats?.incidentsByType?.AGUA || 0}</Text>
               </View>
 
 
               <View style={styles.typeStatItem}>
                 <View style={[styles.typeDot, { backgroundColor: Colors.warning }]} />
                 <Ionicons name="flash" size={14} color="rgba(255,255,255,0.8)" />
-                <Text style={styles.typeStatValue}>{stats?.incidentsByType?.electricidad || 0}</Text>
+                <Text style={styles.typeStatValue}>{stats?.incidentsByType?.LUZ || 0}</Text>
               </View>
             </View>
 

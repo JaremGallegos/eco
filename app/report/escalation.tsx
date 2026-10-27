@@ -47,8 +47,8 @@ export default function EscalationScreen() {
     );
   }
 
-  const regulatorName = incident.serviceType === 'Agua' ? 'SUNASS' : 'OSINERGMIN';
-  const companyName = incident.serviceType === 'Agua' ? 'SEDAPAL' : 'ENEL/LUZ DEL SUR';
+  const regulatorName = incident.serviceType === 'AGUA' ? 'SUNASS' : 'OSINERGMIN';
+  const companyName = incident.serviceType === 'AGUA' ? 'SEDAPAL' : 'ENEL/LUZ DEL SUR';
 
   const generateComplaintText = () => {
     const reportDate = new Date(incident.createdAt).toLocaleString('es-ES', {
@@ -73,8 +73,8 @@ export default function EscalationScreen() {
     const diffHours = Math.floor(diffTime / (1000 * 60 * 60));
     const diffMinutes = Math.floor((diffTime % (1000 * 60 * 60)) / (1000 * 60));
 
-    const serviceType = incident.serviceType === 'Agua' ? 'Agua Potable' : 'Energía Eléctrica';
-    const companyName = incident.serviceType === 'Agua' ? 'SEDAPAL' : 'Enel Distribución Perú / Luz del Sur';
+    const serviceType = incident.serviceType === 'AGUA' ? 'Agua Potable' : 'Energía Eléctrica';
+    const companyName = incident.serviceType === 'AGUA' ? 'SEDAPAL' : 'Enel Distribución Perú / Luz del Sur';
 
 
     const ubicacionDetalle = [];
@@ -161,7 +161,7 @@ III. UBICACIÓN EXACTA DEL INCIDENTE
 
 ${ubicacionDetalle.length > 0 ? ubicacionDetalle.join('\n') : 'Dirección: No disponible'}
 
-Coordenadas GPS: 
+Coordenadas GPS:
 Latitud: ${incident.location.latitude.toFixed(6)}
 Longitud: ${incident.location.longitude.toFixed(6)}
 
@@ -198,31 +198,31 @@ ${incident.timeline && incident.timeline.length > 0 ? 'VII' : 'VI'}. SOLICITUD Y
 
 Solicito formalmente a ${regulatorName} que:
 
-1. INVESTIGUE el incumplimiento del plazo legal de atención establecido en 
+1. INVESTIGUE el incumplimiento del plazo legal de atención establecido en
    el marco normativo vigente.
 
-2. DISPONGA las medidas correctivas urgentes para solucionar el problema 
+2. DISPONGA las medidas correctivas urgentes para solucionar el problema
    reportado con código ${incident.trackingCode}.
 
-3. SANCIONE administrativamente a ${companyName} por el incumplimiento 
+3. SANCIONE administrativamente a ${companyName} por el incumplimiento
    de los estándares de calidad del servicio.
 
-4. INFORME sobre las acciones correctivas implementadas y el cronograma 
+4. INFORME sobre las acciones correctivas implementadas y el cronograma
    de solución definitiva.
 
 5. GARANTICE que situaciones similares no se repitan en la zona afectada.
 
 6. NOTIFIQUE formalmente la resolución del presente reclamo.
 
-Solicito respuesta en un plazo no mayor a 15 días hábiles conforme a la 
+Solicito respuesta en un plazo no mayor a 15 días hábiles conforme a la
 normativa de transparencia y atención al usuario.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 DECLARACIÓN JURADA
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Declaro bajo juramento que la información consignada en el presente 
-documento es veraz y puede ser verificada en el sistema ECO mediante 
+Declaro bajo juramento que la información consignada en el presente
+documento es veraz y puede ser verificada en el sistema ECO mediante
 el código de seguimiento proporcionado.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

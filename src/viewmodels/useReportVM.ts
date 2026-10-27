@@ -123,11 +123,8 @@ export function useReportVM() {
         ? addressParts.join(', ')
         : `${location.latitude.toFixed(6)}, ${location.longitude.toFixed(6)}`;
 
-
-
-
       const result = await createIncident({
-        serviceType: reportType === 'agua' ? 'Agua' : 'Electricidad',
+        serviceType: reportType === 'AGUA' ? 'AGUA' : 'LUZ',
         location: {
           latitude: location.latitude,
           longitude: location.longitude,
@@ -164,4 +161,3 @@ export function useReportVM() {
     reset,
   };
 }
-

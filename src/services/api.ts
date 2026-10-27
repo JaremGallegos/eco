@@ -9,7 +9,7 @@ export async function getDashboardStats(): Promise<DashboardStats> {
       return {
         totalIncidents: 0,
         pendingIncidents: 0,
-        incidentsByType: { agua: 0, electricidad: 0 },
+        incidentsByType: { AGUA: 0, LUZ: 0 },
       };
     }
 
@@ -34,10 +34,10 @@ export async function getDashboardStats(): Promise<DashboardStats> {
     ).length;
 
     const incidentsByType = {
-      agua: incidentsList.filter(
+      AGUA: incidentsList.filter(
         (inc: any) => inc.tipos_servicio?.nombre_servicio === 'AGUA'
       ).length,
-      electricidad: incidentsList.filter(
+      LUZ: incidentsList.filter(
         (inc: any) => inc.tipos_servicio?.nombre_servicio === 'LUZ'
       ).length,
     };
@@ -51,7 +51,7 @@ export async function getDashboardStats(): Promise<DashboardStats> {
     return {
       totalIncidents: 0,
       pendingIncidents: 0,
-      incidentsByType: { agua: 0, electricidad: 0 },
+      incidentsByType: { AGUA: 0, LUZ: 0 },
     };
   }
 }

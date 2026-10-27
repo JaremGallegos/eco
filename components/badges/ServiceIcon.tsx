@@ -16,7 +16,7 @@ export const ServiceIcon: React.FC<ServiceIconProps> = ({
   showLabel = true,
   style
 }) => {
-  const isWater = serviceType === 'Agua';
+  const isWater = serviceType === 'AGUA';
   const iconName = isWater ? 'water' : 'flash';
   const iconColor = isWater ? Colors.water : Colors.electric;
   const backgroundColor = isWater ? Colors.waterAlpha : Colors.electricAlpha;
@@ -46,7 +46,7 @@ export const ServiceIcon: React.FC<ServiceIconProps> = ({
       </View>
       {showLabel && (
         <Text style={[styles.text, { fontSize: dimensions.text }]}>
-          {serviceType}
+          {serviceType === 'AGUA' ? 'Agua' : 'Luz'}
         </Text>
       )}
     </View>
